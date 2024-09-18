@@ -33,6 +33,60 @@ Impact: In countries like Bhutan, the concept of “Gross National Happiness” 
 <br>5. Hinduism (Dharmic Economics)<br>
 Economic Influence: Hinduism emphasizes Dharma (righteous living) and the pursuit of Artha (economic prosperity) in a balanced way. Ethical trade, respect for resources, and charity are key principles in Dharmic economics.
 Impact: India’s mixed economy, which balances tradition with modern capitalism, draws inspiration from these values, alongside globalization and innovation.</p>`;
+        }else if (postId === 3) {
+            content = `<p class="additional-content">பதவிகள் :<br>
+
+Non-Technical Popular Categories (NTPC) i.e. Chief Commercial – Ticket Supervisor, Station Master, Goods Train Manager, Junior Account Assistant – Typist, Senior Clerk – Typist, Commercial – Ticket Clerk, Accounts Clerk – Typist, Junior Clerk – Typist & Trains Clerk Posts
+
+<br>காலிப்பணியிடங்கள்  :<br>
+
+          11558 பணியிடம் காலியாக உள்ளது.
+
+<br>கல்வி தகுதி :<br>
+
+
+<br>1. Chief Commercial – Ticket Supervisor – Any Degree<br>
+<br>2. Station Master – Any Degree<br>
+<br>3. Goods Train Manager – Any Degree<br>
+<br>4. Junior Account Assistant – Typist – Any Degree with Typing proficiency in English or Hindi on Computer is essential<br>
+<br>5. Senior Clerk – Typist – Any Degree with Typing proficiency in English or Hindi on Computer is essential<br>
+<br>6. Commercial – Ticket Clerk – 12th (+2 Stage) or its Equivalent<br>
+<br>7. Accounts Clerk – Typist – 12th (+2 Stage) or its Equivalent<br>
+<br>8. Junior Clerk – Typist – 12th (+2 Stage) or its Equivalent<br>
+<br>9. Trains Clerk – 12th (+2 Stage) or its Equivalent<br>
+
+<br>வயது வரம்பு :<br>
+
+
+<br>1. Chief Commercial – Ticket Supervisor – 18 to 36 Years<br>
+<br>2. Station Master – 18 to 36 Years<br>
+<br>3. Goods Train Manager – 18 to 36 Years<br>
+<br>4. Junior Account Assistant – Typist – 18 to 36 Years<br>
+<br>5. Senior Clerk – Typist – 18 to 36 Years<br>
+<br>6. Commercial – Ticket Clerk – 18 to 33 Years<br>
+<br>7. Accounts Clerk – Typist – 18 to 33 Years<br>
+<br>8. Junior Clerk – Typist – 18 to 33 Years<br>
+<br>9. Trains Clerk – 18 to 33 Years<br>
+<br>சம்பள விவரம் :<br>
+
+<br>1. Chief Commercial – Ticket Supervisor – Level 6 Rs.35400/-<br>
+<br>2. Station Master – Level 6 Rs.35400/-<br>
+<br>3. Goods Train Manager – Level 5 Rs.29200/-<br>
+<br>4. Junior Account Assistant – Typist – Level 5 Rs.29200/-<br>
+<br>5. Senior Clerk – Typist – Level 5 Rs.29200/-<br>
+<br>6. Commercial – Ticket Clerk – Level – 3 Rs.21700/-<br>
+<br>7. Accounts Clerk – Typist – Level – 3 Rs.19900/-<br>
+<br>8. Junior Clerk – Typist – Level – 3 Rs.19900/-<br>
+<br>9. Trains Clerk – Level – 3 Rs.19900/-<br>
+<br>தேர்வு செய்யும் முறை:<br>
+
+<br>1. 1st Stage Computer Based Test (CBT)<br>
+<br>2. 2nd Stage Computer Based Test (CBT), Typing Skill Test/Computer Based Aptitude Test (as applicable) and Document Verification/Medical Examination<br>
+<br>விண்ணப்பிக்கும் முறை :<br>
+
+Eligible and interested candidates are required to visit RRB NTPC website (https://www.rrbchennai.gov.in/) and submit the application online. Online Registration shall commence at 14.09.2024 and will close at 13.10.2024<br>
+<br>NOTIFICATION : <a href="https://drive.google.com/file/d/1Rzo46P4U1pG026PrPIEKVzC2aJAcz_i8/view?usp=drivesdk" download="RRB-NTPC-Short-Notice.pdf">CLICK HERE</a><br>
+<br> WEBSITE : <a href="https://www.rrbchennai.gov.in/" target="_blank">CLICKHERE </a></p>`;
         }
 
         const readMoreButton = $(this);
