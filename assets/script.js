@@ -36,7 +36,7 @@ function checkDesktopMode() {
   const content = document.getElementById('content');
 
   // If the screen width is less than 1024px, show the modal and blur the content
-  if (screenWidth < 340) {
+  if (screenWidth < 360) {
     modal.style.display = 'block';  // Show the modal
     content.classList.add('blur');  // Apply blur effect to content
   } else {
