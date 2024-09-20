@@ -412,37 +412,49 @@ span{
     color: white;
 }
 
-/* Notification styling */
-.notification {
+/* Style for the content */
+#content {
+  padding: 20px;
+  text-align: center;
+  transition: filter 0.5s ease; /* Smooth transition for blur effect */
+}
+
+/* Apply the blur effect */
+.blur {
+  filter: blur(8px);
+  pointer-events: none; /* Prevent interaction with blurred content */
+}
+
+/* Modal Styling */
+.modal {
+  display: none;
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
-  background-color: #ff9800;
-  color: white;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
   text-align: center;
-  padding: 15px;
-  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
-  display: none;
-  z-index: 1000;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
 }
 
-.notification p {
-  margin: 0;
+.modal-content h2 {
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+
+.modal-content p {
   font-size: 18px;
+  margin: 0;
 }
-
-.notification button {
-  background-color: #ffffff;
-  color: #ff9800;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.notification button:hover {
-  background-color: #f1f1f1;
-}
-
