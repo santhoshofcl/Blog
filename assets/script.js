@@ -29,20 +29,22 @@ menuIcon.addEventListener('click', () => {
     navbar.classList.toggle('active');
 });
 
-function checkScreenWidth() {
-  let screenWidth = window.innerWidth;
-  
+// Function to check if the screen is below a desktop width (e.g., less than 1024px)
+function checkDesktopMode() {
+  const screenWidth = window.innerWidth;
+  const modal = document.getElementById('desktopModal');
+  const content = document.getElementById('content');
+
+  // Toggle visibility based on screen width
   if (screenWidth < 1024) {
-    // Show modal and blur content
-    document.getElementById("myModal").style.display = "block";
-    document.getElementById("content").style.filter = "blur(5px)";
+    modal.style.display = 'block';  // Show the modal
+    content.style.display = 'none'; // Hide the website content
   } else {
-    // Hide modal and remove blur
-    document.getElementById("myModal").style.display = "none";
-    document.getElementById("content").style.filter = "none";
+    modal.style.display = 'none';   // Hide the modal
+    content.style.display = 'block'; // Show the website content
   }
 }
 
-// Run on page load and resize
-window.onload = checkScreenWidth;
-window.onresize = checkScreenWidth;
+// Run the check when the window loads and when it's resized
+window.onload = checkDesktopMode;
+window.onresize = checkDesktopMode;
