@@ -411,3 +411,38 @@ span{
     font-size: 10px;
     color: white;
 }
+
+/* Notification styling */
+.notification {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ff9800;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 1000;
+}
+
+.notification p {
+  margin: 0;
+  font-size: 18px;
+}
+
+.notification button {
+  background-color: #ffffff;
+  color: #ff9800;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.notification button:hover {
+  background-color: #f1f1f1;
+}
+
