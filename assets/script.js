@@ -29,21 +29,22 @@ menuIcon.addEventListener('click', () => {
     navbar.classList.toggle('active');
 });
 
-// Function to check if the user is on a mobile device
-function isMobile() {
-  return /Mobi|Android/i.test(navigator.userAgent);
+// Function to check if the screen is below a desktop width (e.g., less than 1024px)
+function checkDesktopMode() {
+  const screenWidth = window.innerWidth;
+  const modal = document.getElementById('desktopModal');
+  const content = document.getElementById('content');
+
+  // If the screen width is less than 1024px, show the modal and blur the content
+  if (screenWidth < 1024) {
+    modal.style.display = 'block';  // Show the modal
+    content.classList.add('blur');  // Apply blur effect to content
+  } else {
+    modal.style.display = 'none';   // Hide the modal
+    content.classList.remove('blur');  // Remove blur effect from content
+  }
 }
 
-// Show the notification if the user is on a mobile device
-window.onload = function() {
-  if (isMobile()) {
-    document.getElementById('desktopNotification').style.display = 'block';
-  }
-};
-
-// Close the notification when the user clicks the close button
-document.getElementById('closeNotification').addEventListener('click', function() {
-  document.getElementById('desktopNotification').style.display = 'none';
-});
-
-
+// Run the check when the window loads and when it's resized
+window.onload = checkDesktopMode;
+window.onresize = checkDesktopMode;
