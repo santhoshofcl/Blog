@@ -28,23 +28,3 @@ menuIcon.addEventListener('click', () => {
     menuIcon.classList.toggle('bx-x');
     navbar.classList.toggle('active');
 });
-
-// Function to check if the screen is below a desktop width (e.g., less than 1024px)
-function checkDesktopMode() {
-  const screenWidth = window.innerWidth;
-  const modal = document.getElementById('desktopModal');
-  const content = document.getElementById('content');
-
-  // Toggle visibility based on screen width
-  if (screenWidth < 360) {
-    modal.style.display = 'block';  // Show the modal
-    content.style.display = 'none'; // Hide the website content
-  } else {
-    modal.style.display = 'none';   // Hide the modal
-    content.style.display = 'block'; // Show the website content
-  }
-}
-
-// Run the check when the window loads and when it's resized
-window.onload = checkDesktopMode;
-window.onresize = checkDesktopMode;
