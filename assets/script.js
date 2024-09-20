@@ -29,5 +29,21 @@ menuIcon.addEventListener('click', () => {
     navbar.classList.toggle('active');
 });
 
+// Function to check if the user is on a mobile device
+function isMobile() {
+  return /Mobi|Android/i.test(navigator.userAgent);
+}
+
+// Show the notification if the user is on a mobile device
+window.onload = function() {
+  if (isMobile()) {
+    document.getElementById('desktopNotification').style.display = 'block';
+  }
+};
+
+// Close the notification when the user clicks the close button
+document.getElementById('closeNotification').addEventListener('click', function() {
+  document.getElementById('desktopNotification').style.display = 'none';
+});
 
 
