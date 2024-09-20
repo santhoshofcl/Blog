@@ -29,22 +29,20 @@ menuIcon.addEventListener('click', () => {
     navbar.classList.toggle('active');
 });
 
-// Function to check if the screen is below a desktop width (e.g., less than 1024px)
-function checkDesktopMode() {
-  const screenWidth = window.innerWidth;
-  const modal = document.getElementById('desktopModal');
-  const content = document.getElementById('content');
-
-  // If the screen width is less than 1024px, show the modal and blur the content
-  if (screenWidth < 360) {
-    modal.style.display = 'block';  // Show the modal
-    content.classList.add('blur');  // Apply blur effect to content
+function checkScreenWidth() {
+  let screenWidth = window.innerWidth;
+  
+  if (screenWidth < 1024) {
+    // Show modal and blur content
+    document.getElementById("myModal").style.display = "block";
+    document.getElementById("content").style.filter = "blur(5px)";
   } else {
-    modal.style.display = 'none';   // Hide the modal
-    content.classList.remove('blur');  // Remove blur effect from content
+    // Hide modal and remove blur
+    document.getElementById("myModal").style.display = "none";
+    document.getElementById("content").style.filter = "none";
   }
 }
 
-// Run the check when the window loads and when it's resized
-window.onload = checkDesktopMode;
-window.onresize = checkDesktopMode;
+// Run on page load and resize
+window.onload = checkScreenWidth;
+window.onresize = checkScreenWidth;
