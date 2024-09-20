@@ -411,27 +411,32 @@ span{
     font-size: 10px;
     color: white;
 }
-@media (max-width: 1080px) and (min-width: 768px) {
+@media (max-width:400px) or (max-width: 360px){
     html {
         font-size: 90%; 
     }
     .services-container {
         padding-bottom: 6rem; 
         grid-template-columns: repeat(2, 1fr); 
-        margin: 0 3rem;
+        margin: 0 3rem; 
     }
+}
+@media (max-width:400px) or (max-width: 360px){
     header {
-        padding: 1.5rem 3%;
+        padding: 10px;
     }
     section {
-        padding: 10rem 3% 2rem; 
+        padding: 10px 3% 5px; 
     }
     .services {
-        padding: 7rem; 
+        padding: 5px; 
     }
     .footer {
-        padding: 1.5rem 3%; 
+        width: 100%;
+        margin-left: 27rem;
     }
+}
+@media (max-width:400px) or (max-width: 360px){
     #menu-icon {
         display: block;
     }
@@ -459,7 +464,8 @@ span{
     }
     .home {
         flex-direction: column;
-        margin: 4rem 2rem; 
+        margin: 9rem 2rem; 
+        align-items: start;
     }
     .home-content h3 {
         font-size: 2.4rem; 
@@ -474,27 +480,93 @@ span{
     }
     .home-img img {
         width: 80vw; 
-        margin-top: 1rem;
+        margin-top: 11rem;
+        margin-left: 25rem;
     }
-    .about {
-        flex-direction: column-reverse;
-    }
-    .about-content {
-        margin: 0 2rem 3rem; 
-    }
-    .about img {
-        width: 80vw; 
-        margin-top: 1rem;
-        margin-bottom: 3rem;
-    }
+    
     .services h2 {
         margin-bottom: 3rem; 
+        margin-left: 32rem;
     }
     .services-container {
+        width: 100%;
         grid-template-columns: repeat(1, 1fr);
+        margin-left: 25rem;
+    }
+    .service-box{
+        width: 35rem;
+    }
+    .about{
+        margin-left: 30rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10rem;
+        background: var(--bg-color);
+        color: white;
+    }
+    .about h2 span{
+        color: var(--main-color);
+        text-shadow: 0 0 50px var(--main-color);
+    }
+    .about-img{
+        border-radius: 50%;
+        margin-left: 2rem;
+    }
+    .about-img img{
+        position: relative;
+        width: 100vw;
+        border-radius: 50%;
+        box-shadow: 0 0 25px var(--main-color);
+        top: 1rem;
+        cursor: pointer;
+        transition: 0.4s ease-in-out;
+    }
+    .about-img img:hover{
+        box-shadow: 0 0 50px var(--main-color),
+                    0 0 100px var(--main-color);
+    }
+    .heading{
+        text-align: center;
+        font-size: 8rem;
+    }
+    .about-content h2{
+        text-align: left;
+        line-height: 1.5;
+    }
+    .about-content h3{
+        font-size: 2.6rem;
+    }
+    .about-content p{
+        font-size: 1.6rem;
+        margin: 3rem 0 4rem;
+    }
+    
+    .about-content .text-animation span::before{
+        content: 'Software Developer';
+        color: var(--main-color);
+        animation: words 20s infinite;
+    }
+    .about-content .text-animation span::after{
+        content: "";
+        background-color: var(--second-bg-color);
+        position: absolute;
+        width: calc(100% + 8px);
+        height: 100%;
+        border-left: 3px solid var(--second-bg-color);
+        right: -8px;
+        animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
+    }
+    ::-webkit-scrollbar{
+        width: 5px;
+    }
+    ::-webkit-scrollbar-thumb{
+        background-color: var(--main-color);
+    }
+    ::-webkit-scrollbar-track{
+        background-color: var(--bg-color);
+        width: 50px;
     }
 }
-
-
 
 
