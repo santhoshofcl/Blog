@@ -36,7 +36,7 @@ function checkDesktopMode() {
   const content = document.getElementById('content');
 
   // Toggle visibility based on screen width
-  if (screenWidth < 1024) {
+  if (screenWidth < 360) {
     modal.style.display = 'block';  // Show the modal
     content.style.display = 'none'; // Hide the website content
   } else {
