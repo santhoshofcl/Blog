@@ -414,6 +414,7 @@ span{
 
 /* Style for the content */
 #content {
+    color: black;
   padding: 20px;
   text-align: center;
   transition: filter 0.5s ease; /* Smooth transition for blur effect */
@@ -438,6 +439,7 @@ span{
 }
 
 .modal-content {
+    color: black;
   position: absolute;
   top: 50%;
   left: 50%;
