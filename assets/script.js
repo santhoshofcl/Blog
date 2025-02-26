@@ -160,21 +160,38 @@ function nextQuestion() {
 // ✅ Submit user responses and calculate score
 function submitQuiz() {
     let score = 0;
+    let quizContainer = document.getElementById("quiz-container");
+    quizContainer.innerHTML = ""; // Clear the container for results
 
-    filteredQuestions.forEach(question => {
+    filteredQuestions.forEach((question, index) => {
         let questionId = String(question["Question ID"]).trim();
         let correctAnswer = String(question["Correct Answer"]).trim();
-        let userAnswer = userAnswers[questionId];
+        let userAnswer = userAnswers[questionId] || "No Answer"; // Default if not answered
 
-        if (userAnswer && userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
-            score++;
-        }
+        let isCorrect = userAnswer.toLowerCase() === correctAnswer.toLowerCase();
+        if (isCorrect) score++;
+
+        let questionBlock = document.createElement("div");
+        questionBlock.classList.add("result-block");
+
+        questionBlock.innerHTML = `
+            <p><strong>${index + 1}. ${question.Question}</strong></p>
+            <p>Your Answer: <span class="${isCorrect ? "correct" : "incorrect"}">${userAnswer}</span></p>
+            <p>Correct Answer: <span class="correct">${correctAnswer}</span></p>
+            <hr>
+        `;
+
+        quizContainer.appendChild(questionBlock);
     });
 
-    console.log("Final Score:", score);
-
+    // Show final score
     document.getElementById("quiz-result").innerHTML = `<h3>Your Score: ${score} / ${filteredQuestions.length}</h3>`;
+
+    // Hide next button
+    document.getElementById("next-button").style.display = "none";
+    document.getElementById("submit-button").style.display = "none";
 }
+
 
 function toggleMenu() {
     var nav = document.querySelector(".navigation");
