@@ -4,147 +4,307 @@
     <link rel="shortcut icon" href="assets/head-icon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-    <title>Santhoshofcl.info</title>
+    <title>Santhoshofcl</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
-        .Quiz_call {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
+        .nav-link {
+            @apply text-white text-lg font-medium hover:text-gray-300 transition duration-300;
         }
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            z-index: 1000;
-            max-width: 90%;
-            width: 300px;
-            text-align: center;
-        }
-        .popup .close-btn {
-            position: absolute;
-            top: 5px;
-            right: 10px;
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
-        .popup a {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: rgb(7,95,95);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .popup a:hover {
-            background-color: #B3FFFF;
-            color: black;
-        }
-        @media (max-width: 600px) {
-            .popup {
-                width: 90%;
-                padding: 15px;
-            }
+        .active {
+            @apply text-yellow-400 font-bold;
         }
     </style>
 </head>
-<body>
-    <div class="overlay" id="overlay"></div>
-    <div class="popup" id="popup">
-        <span class="close-btn" onclick="closePopup()">&times;</span>
-        <p>If you want a Quiz, then click here!</p>
-        <a href="quiz.html">Click Here</a>
-    </div>
-    <nav>
-        <div class="nav-container">
-            <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
-                <span>Santhoshofcl</span>
+<body class="text-white">
+    <canvas id="canvas"></canvas>
+
+    <nav class="fixed top-0 left-0 right-0 bg-transparent bg-opacity-50 z-50 backdrop-blur-md">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#" class="text-2xl font-bold text-white">Santhoshofcl</a>
+    
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link active">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="quiz.html" class="nav-link">Quiz</a>
+                </div>
+    
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white focus:outline-none" id="menu-toggle">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
             </div>
-            <div class="links">
-                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"><a href="index.html">Home</a></div>
-                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"><a href="quiz.html">Quiz</a></div>
-                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"><a href="#">About</a></div>
-                <div class="link contact-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><a href="#">Contact Us</a></div>
-            </div>
-            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
-        </div>
-        <div class="dropdown">
-            <div class="links">
-                <a href="index.html">Home</a>
-                <a href="quiz.html">Quiz</a>
-                <a href="">Aboupt</a>
-                <a href="">Contact Us</a>
-                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+    
+            <!-- Mobile Menu -->
+            <div class="hidden md:hidden flex flex-col space-y-4 mt-4 bg-black bg-opacity-80 p-4 rounded-lg" id="mobile-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="quiz.html" class="nav-link">Quiz</a>
             </div>
         </div>
     </nav>
 
-        <section>
-            <div class="main-container">
-                <div class="image" data-aos="zoom-in-right" data-aos-duration="2500">
-                    <img src="assets/main.png" alt="">
-                </div>
-                <div class="content">
-                    <h1 data-aos="fade-left" data-aos-duration="1000" data-aos-delay="800">Hey I'm <span>Santhosh</span></h1>
-                    <div class="typewriter" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="900">I'm a <span></span></div>
-                    <p data-aos="flip-up" data-aos-duration="1000" data-aos-delay="1000">Computer Science graduate from Periyar University with a passion for technology and innovation. I specialize in cloud computing, web development, and data analytics. My projects range from building interactive websites to developing AI-powered solutions.</p>
-                    <div class="social-links" data-aos="flip-down" data-aos-duration="1000" data-aos-delay="1200">
-                        <a href="https://www.instagram.com/santhosh_ofcl_/" ><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/profile.php?id=100014022824327"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="https://www.linkedin.com/in/santhosh-krishnan-802574292/"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="https://x.com/_santhosh_ofcl_"><i class="fa-brands fa-x-twitter"></i></a>
+    <main>
+        <section id="home">
+        <div class="hero">
+            <img src="assets/profile.jpg" alt="Santhosh">
+            <h2>Hi, I’m <span class="highlight">Santhosh</span></h2>
+            <p>A passionate <span id="dynamic-text"></span></p>
+            <p>Explore my projects, read my blog, or connect with me!</p>
+        </div>
+    
+        <div class="quick-links">
+            <a href="#projects">🔗 Projects</a>
+            <a href="assets/resume.pdf" target="_blank">📄 Resume</a>
+            <a href="#contact">📩 Contact</a>
+        </div>
+    
+        <div class="tech-stack">
+            <h2>Tech Stack & Skills</h2>
+            <div class="tech-icons">
+                <i class="fab fa-python"></i>
+                <i class="fab fa-js"></i>
+                <i class="fab fa-react"></i>
+                <i class="fab fa-aws"></i>
+                <i class="fab fa-google"></i>
+            </div>
+        </div>
+    
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-12 text-center">About Me</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4">My Journey</h3>
+                        <p class="mb-4">Computer Science graduate specializing in AI, ML and web development.</p>
+                        <p>Passionate about building intelligent systems and data-driven applications.</p>
+                    </div>
+                    <div class="skills-card"> 
+                        <h3 class="text-2xl font-semibold mb-4">Skills</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center"><i class="fas fa-cube mr-3 text-blue-400"></i> Python, TensorFlow, PyTorch</li>
+                            <li class="flex items-center"><i class="fas fa-code mr-3 text-blue-400"></i> JavaScript, React, HTML, CSS</li>
+                            <li class="flex items-center"><i class="fas fa-server mr-3 text-blue-400"></i> Flask, Django, Firebase</li>
+                            <li class="flex items-center"><i class="fas fa-database mr-3 text-blue-400"></i> Google Apps Script, Google Sheets</li>
+                            <li class="flex items-center"><i class="fas fa-brain mr-3 text-blue-400"></i> Machine Learning, NLP (spaCy, BERT, Transformers)</li>
+                            <li class="flex items-center"><i class="fas fa-chart-line mr-3 text-blue-400"></i> Stock Market & Crypto Prediction</li>
+                            <li class="flex items-center"><i class="fas fa-cloud mr-3 text-blue-400"></i> AWS, GCP (Cloud Deployment & Hosting)</li>
+                            <li class="flex items-center"><i class="fas fa-database mr-3 text-blue-400"></i> Data Science (Pandas, NumPy, Matplotlib)</li>
+                            <li class="flex items-center"><i class="fas fa-user-tie mr-3 text-blue-400"></i> Automated Resume Screening & AI Chatbots</li>
+                            <li class="flex items-center"><i class="fas fa-wallet mr-3 text-blue-400"></i> FinTech & Digital Payment Systems</li>
+                            <li class="flex items-center"><i class="fas fa-bullhorn mr-3 text-blue-400"></i> Digital Marketing (Content Creation, SEO, Blogs & Videos)</li>
+                        </ul>
                     </div>
                     
                 </div>
             </div>
         </section>
-        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-        <script>
-          AOS.init({offset:0});
-        </script>
-        <script>
-            function hamburg(){
-                const navbar = document.querySelector(".dropdown")
-                navbar.style.transform = "translateY(0px)"
-            }
-            function cancel(){
-                const navbar = document.querySelector(".dropdown")
-                navbar.style.transform = "translateY(-500px)"
-            }
-            function showPopup() {
-                document.getElementById("popup").style.display = "block";
-                document.getElementById("overlay").style.display = "block";
-            }
-            function closePopup() {
-                document.getElementById("popup").style.display = "none";
-                document.getElementById("overlay").style.display = "none";
-            }
-            setTimeout(showPopup, 15000); // Show popup after 5 seconds
-        </script>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-black bg-opacity-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-12 text-center">Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="project-card">
+                        <h3 class="text-xl font-semibold mb-2">Stock Prediction</h3>
+                        <p>AI system for stock market forecasting</p>
+                    </div>
+                    <div class="project-card">
+                        <h3 class="text-xl font-semibold mb-2">DeepLearnDroid</h3>
+                        <p>Automated with NLP</p>
+                    </div>
+                    <div class="project-card">
+                        <h3 class="text-xl font-semibold mb-2">InfoVision</h3>
+                        <p>Automated Image Generated bot</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <h2>My Services</h2>
+        
+            <!-- Web Development -->
+            <div class="service">
+                <h3>Web Development</h3>
+                <p>Custom & dynamic websites for personal branding, businesses, and e-commerce.</p>
+                <ul>
+                    <li> Custom Web Applications</li>
+                    <li> Portfolio & Business Sites</li>
+                    <li> E-commerce & Interactive Platforms</li>
+                    <li> Frontend (React.js, HTML, CSS, JS)</li>
+                    <li> Backend (Flask, Django, Google Apps Script)</li>
+                </ul>
+                <p><strong>Tech Stack:</strong> HTML, CSS, JavaScript, React.js, Flask, Django, Firebase</p>
+            </div>
+        
+            <!-- AI & Machine Learning -->
+            <div class="service">
+                <h3>AI & Machine Learning Solutions</h3>
+                <p>Advanced AI solutions for predictive analytics, sentiment analysis, and automation.</p>
+                <ul>
+                    <li> Stock & Crypto Price Prediction</li>
+                    <li> AI-Powered Resume Screening</li>
+                    <li> Sentiment Analysis & NLP</li>
+                    <li> AI Chatbots & Assistants</li>
+                </ul>
+                <p><strong>Tech Stack:</strong> Python, TensorFlow, PyTorch, BERT, spaCy, OpenAI API</p>
+            </div>
+        
+            <!-- Chatbot Development -->
+            <div class="service">
+                <h3>Chatbot Development</h3>
+                <p>Conversational AI bots for business automation & customer engagement.</p>
+                <ul>
+                    <li> Website & Business Chatbots</li>
+                    <li> Google Apps Script Integration</li>
+                    <li> WhatsApp & Telegram Bots</li>
+                    <li> Dialogflow & Rasa NLP Models</li>
+                </ul>
+                <p><strong>Tech Stack:</strong> JavaScript, Google Apps Script, OpenAI API, Dialogflow, Rasa</p>
+            </div>
+        
+            <!-- Digital Marketing -->
+            <div class="service">
+                <h3>Digital Marketing & SEO</h3>
+                <p>Boost online presence with SEO, content marketing, and analytics.</p>
+                <ul>
+                    <li> Content Marketing (Blogs, YouTube)</li>
+                    <li> SEO Optimization & Google Rankings</li>
+                    <li> Social Media Branding & Strategy</li>
+                    <li> Performance Tracking with Google Analytics</li>
+                </ul>
+                <p><strong>Tech Stack:</strong> Google Analytics, WordPress, SEO Tools</p>
+            </div>
+        
+            <!-- Quiz & Educational Platforms -->
+            <div class="service">
+                <h3>Quiz & Educational Platforms</h3>
+                <p>Build interactive learning & quiz platforms for competitive exams.</p>
+                <ul>
+                    <li> Online Quiz Systems</li>
+                    <li> Google Sheets Quiz Management</li>
+                    <li> User Authentication & Progress Tracking</li>
+                    <li> LMS Development</li>
+                </ul>
+                <p><strong>Tech Stack:</strong> HTML, CSS, JavaScript, Google Apps Script, Firebase</p>
+            </div>
+        
+            <!-- AI Trading & Crypto Solutions -->
+            <div class="service">
+                <h3>AI Trading & Crypto Solutions</h3>
+                <p>Automated crypto trading bots & predictive financial models.</p>
+                <ul>
+                    <li> AI-Powered Crypto Trading Bots</li>
+                    <li> Automated Trading Algorithms</li>
+                    <li> Real-Time Crypto Predictions</li>
+                    <li> NFT & Smart Contract Development</li>
+                </ul>
+                <p><strong>Tech Stack:</strong> Python, TensorFlow, Flutter, Firebase, Solidity</p>
+            </div>
+        
+        </section>
+
+        <section id="contact" class="py-20 bg-black bg-opacity-50">
+            <div class="container mx-auto px-6 max-w-2xl">
+                <h2 class="text-3xl font-bold mb-12 text-center">Contact Me</h2>
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="w-full md:w-1/2">
+                        <h3 class="text-xl font-semibold mb-4">Get in Touch</h3>
+                        
+                        <div class="flex space-x-4">
+                            <a href="mailto:santhoshofcl01@gmail.com" class="text-2xl"><i class="fas fa-envelope mr-2"></i></a>
+                            <a href="https://github.com/santhoshofcl" class="text-2xl"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/santhosh-krishnan-802574292" class="text-2xl"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://twitter.com/_santhosh_ofcl_" class="text-2xl"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <form id="contact-form" action="assets/send_email.php" method="POST">
+                            <div class="mb-4">
+                            <input type="text" class="form-input" name="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="mb-4">
+                            <input type="email" class="form-input" name="email" placeholder="Your Email" required>
+                            </div>
+
+                            
+                            <select class="select-sub" name="subject" required>
+                                <option value="">Select Subject</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="Collaboration">Collaboration</option>
+                                <option value="Project Discussion">Project Discussion</option>
+                            </select>
+                            <div class="mb-4">
+                            <textarea name="message" class="form-input" rows="4" placeholder="Your Message" required></textarea>
+                            </div>
+                            <!-- Google reCAPTCHA -->
+                            <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+                            
+                            <button type="submit" class="btn-primary w-full" >Send Message</button>
+                        </form>
+                    
+                        <!-- Success Message -->
+                        <div id="success-message" class="hidden">✔️ Message sent successfully!</div>
+                    
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Footer with Contact -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <h2>Santhosh Krishnan</h2>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#services">Services</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/santhoshofcl" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/santhosh-krishnan-802574292" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://twitter.com/_santhosh_ofcl_" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+                <p>© 2025 Santhosh Krishnan. All Rights Reserved.</p>
+            </div>
+        </footer>
+        
+        
+
+    </main>
+    <script>
+        document.getElementById("menu-toggle").addEventListener("click", function () {
+            const mobileMenu = document.getElementById("mobile-menu");
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+    <script src="assets/script.js"></script>
+    
 </body>
 </html>
