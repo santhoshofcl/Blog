@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="assets/head-icon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santhoshofcl</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7311910532350997"
+     crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+
+</head>
+<body class="text-black">
+      <canvas id="canvas"></canvas>
+      <header>
+        <nav class="fixed top-0 left-0 right-0 bg-transparent bg-opacity-50 z-50 backdrop-blur-md shadow-md">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#" class="text-2xl font-bold text-black">Santhoshofcl</a>
+    
+                <!-- Search Box (Hidden on Small Screens) -->
+                <div class="hidden md:flex items-center border rounded-md p-2 w-64">
+                    <input class="w-full focus:outline-none" type="text" id="searchBox" placeholder="Search posts...">
+                    <button class="text-gray-500 focus:outline-none">
+                        🔍
+                    </button>
+                </div>
+    
+                <!-- Main Menu & Mobile Toggle -->
+                <div class="flex items-center">
+                    <a href="index.html" class="hidden md:block text-lg font-semibold text-black px-4">Main Menu</a>
+                    <button id="menuToggle" class="md:hidden p-2 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+    
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden fixed inset-0 bg-white bg-opacity-95 p-6 flex flex-col items-center justify-center">
+                <button id="closeMenu" class="absolute top-4 right-6 text-3xl font-bold">&times;</button>
+                <a href="index.html" class="block text-lg font-semibold text-black mt-4">Main Menu</a>
+            </div>
+        </nav>
+    </header>
+        <div id="loading-overlay">
+        <div class="loader"></div>
+    </div>
+    <div id="blog-container"></div>
+    <script src="assets/Blog.js"></script>
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.remove('hidden');
+        });
+    
+        document.getElementById('closeMenu').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
