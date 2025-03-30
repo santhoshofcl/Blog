@@ -1,0 +1,133 @@
+#blog-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+.blog-post {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+.blog-post:hover {
+    transform: scale(1.05);
+}
+
+.post-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+h2 {
+    font-size: 1.2em;
+    text-align: center;
+    margin: 5px 0;
+}
+
+.preview-content {
+    font-size: 0.9em;
+    color: #555;
+    text-align: center;
+}
+
+.tags {
+    font-size: 0.8em;
+    color: #888;
+}
+
+.full-post {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.full-post img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.full-post h1 {
+    font-size: 1.8em;
+    margin: 10px 0;
+}
+
+.full-post div {
+    font-size: 1em;
+    color: #444;
+    text-align: left;
+}
+
+.full-post .tags {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+.full-post small {
+    display: block;
+    margin-top: 10px;
+    color: #666;
+}
+
+.full-post button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.full-post button:hover {
+    background-color: #0056b3;
+}
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(98, 94, 94, 0.8); /* Light background */
+    backdrop-filter: blur(5px); /* Apply blur effect */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ccc;
+    border-top: 5px solid #00a78e; /* Blue spinner */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+
+

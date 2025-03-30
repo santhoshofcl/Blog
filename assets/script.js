@@ -429,5 +429,3 @@ document.getElementById('contact-form').addEventListener('submit', function(even
     })
     .catch(error => console.error('Error:', error));
 });
-
-
